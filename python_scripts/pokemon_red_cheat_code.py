@@ -18,20 +18,6 @@ def fix_checksum(ram):
     
     ram[0x3523] = checksum&0xff
     #print("[+] Checksum {} written".format(checksum&0xff))
-    
-def decimal_to_bcd(decimal_value):
-    bcd_value = bytearray()
-    # Convert the decimal value to BCD format
-    while decimal_value > 0:
-        digit = decimal_value % 10
-        decimal_value //= 10
-        bcd_byte = (digit << 4) & 0xF0
-        digit = decimal_value % 10
-        bcd_byte |= digit & 0x0F
-        bcd_value.append(bcd_byte)
-
-    bcd_value.reverse()
-    return bcd_value
 
 def get_hex(number):
     unit = number % 10
